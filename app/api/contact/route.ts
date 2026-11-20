@@ -6,6 +6,7 @@ export const dynamic = "force-dynamic"
 
 const recipient = "contact.elevaimkt@gmail.com"
 const sender = "Matt4Tech <onboarding@resend.dev>"
+const CRM_INGEST_URL = "https://matt4tech-painel.vercel.app/api/leads/ingest"
 
 function escapeHtml(value: unknown): string {
   return String(value ?? "")
@@ -91,6 +92,7 @@ export async function POST(request: Request) {
         `Google Ads history: ${triedBefore}`,
         `Previous result: ${previousResult || "Not provided"}`,
         `Daily ad budget: ${budget}`,
+        `Found us via: ${clean(body.foundUs, 80) || "Not provided"}`,
         `Expected value: ${valueExpectation || "Not provided"}`,
       ].join("\n"),
       html: `
@@ -122,6 +124,27 @@ export async function POST(request: Request) {
     }
 
     console.info("Matt4Tech form email accepted:", data?.id)
+
+    // Save the lead in the Matt4tech HQ CRM. Failure here never blocks the form.
+    try {
+      await fetch(CRM_INGEST_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          fullName, shopName, website, cityState, email, phone, triedBefore, budget,
+          foundUs: clean(body.foundUs, 80),
+          utm_source: clean(body.utm_source, 120),
+          utm_medium: clean(body.utm_medium, 120),
+          utm_campaign: clean(body.utm_campaign, 160),
+          gclid: clean(body.gclid, 200),
+          referrer: clean(body.referrer, 300),
+          landing_page: clean(body.landing_page, 300),
+        }),
+        signal: AbortSignal.timeout(4000),
+      })
+    } catch (crmError) {
+      console.error("CRM ingest failed:", crmError)
+    }
     return NextResponse.json({ success: true, id: data?.id })
   } catch (error) {
     console.error("Contact API error:", error)

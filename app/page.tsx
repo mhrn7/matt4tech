@@ -20,6 +20,23 @@ export default function Home() {
   useEffect(() => {
     AOS.init({ once: true, offset: 50, duration: 650 })
 
+    try {
+      if (!window.sessionStorage.getItem("m4t_attr")) {
+        const p = new URLSearchParams(window.location.search)
+        window.sessionStorage.setItem(
+          "m4t_attr",
+          JSON.stringify({
+            utm_source: p.get("utm_source") || "",
+            utm_medium: p.get("utm_medium") || "",
+            utm_campaign: p.get("utm_campaign") || "",
+            gclid: p.get("gclid") || "",
+            referrer: document.referrer || "",
+            landing_page: window.location.pathname,
+          }),
+        )
+      }
+    } catch {}
+
     const scrollToRequestedSection = () => {
       if (window.location.hash !== "#request-review") return
 

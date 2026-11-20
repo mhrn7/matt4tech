@@ -21,6 +21,16 @@ const adsHistoryOptions = [
   "No, never advertised on Google",
 ]
 
+const foundUsOptions = [
+  "Google search",
+  "Google Ads",
+  "Instagram",
+  "Facebook",
+  "WhatsApp message from Matt",
+  "Referral",
+  "Other",
+]
+
 const initialState = {
   fullName: "",
   shopName: "",
@@ -30,12 +40,30 @@ const initialState = {
   phone: "",
   triedBefore: "",
   budget: "",
+  foundUs: "",
   websiteCheck: "",
 }
 
 const inputClass =
   "w-full bg-background border border-border px-4 py-3 text-white text-sm focus:outline-none focus:border-primary transition placeholder:text-muted-foreground/70"
 const labelClass = "block text-xs font-[var(--font-outfit)] font-bold uppercase tracking-widest text-muted-foreground mb-2"
+
+function getAttribution() {
+  if (typeof window === "undefined") return {}
+  try {
+    const saved = JSON.parse(window.sessionStorage.getItem("m4t_attr") || "null")
+    if (saved) return saved
+  } catch {}
+  const p = new URLSearchParams(window.location.search)
+  return {
+    utm_source: p.get("utm_source") || "",
+    utm_medium: p.get("utm_medium") || "",
+    utm_campaign: p.get("utm_campaign") || "",
+    gclid: p.get("gclid") || "",
+    referrer: document.referrer || "",
+    landing_page: window.location.pathname,
+  }
+}
 
 export function RequestFormSection() {
   const router = useRouter()
@@ -59,7 +87,7 @@ export function RequestFormSection() {
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...form, consent: true }),
+        body: JSON.stringify({ ...form, consent: true, ...getAttribution() }),
       })
 
       const payload = await response.json().catch(() => null)
@@ -157,6 +185,17 @@ export function RequestFormSection() {
                 ))}
               </select>
             </div>
+          </div>
+
+          <div>
+            <label htmlFor="foundUs" className={labelClass}>How did you hear about us? (optional)</label>
+            <select id="foundUs" className={`${inputClass} cursor-pointer`} value={form.foundUs}
+              onChange={(e) => update("foundUs", e.target.value)}>
+              <option value="" className="bg-background">Select an option</option>
+              {foundUsOptions.map((opt) => (
+                <option key={opt} value={opt} className="bg-background">{opt}</option>
+              ))}
+            </select>
           </div>
 
           {error && <p role="alert" aria-live="polite" className="text-sm text-destructive">{error}</p>}
