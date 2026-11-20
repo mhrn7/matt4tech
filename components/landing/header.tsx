@@ -53,7 +53,7 @@ export function Header() {
 
         <div className="flex items-center gap-3">
           <AuditCtaLink className="hidden sm:inline-block btn-primary px-5 py-2.5 font-[var(--font-outfit)] font-bold uppercase tracking-wide text-xs md:text-sm">
-            Request a Free Audit
+            Get My Free Audit
           </AuditCtaLink>
 
           <button
@@ -86,7 +86,7 @@ export function Header() {
               onNavigate={() => setIsOpen(false)}
               className="btn-primary mt-4 px-6 py-3 text-center font-[var(--font-outfit)] font-bold uppercase tracking-wide text-sm"
             >
-              Request a Free Audit
+              Get My Free Audit
             </AuditCtaLink>
           </nav>
         </div>

@@ -16,7 +16,7 @@ export function AboutSection() {
           <div className="card-border aspect-square max-w-sm mx-auto lg:mx-0 relative overflow-hidden bg-surface">
             <Image
               src="/matt-neves.webp"
-              alt="Matt, founder of Matt4Tech and Google Ads specialist for US and UK tech repair shops"
+              alt="Matt, founder of Matt4Tech and Google Ads specialist for repair shops in the US"
               fill
               sizes="(max-width: 1024px) 384px, 40vw"
               className="object-cover object-center"
@@ -35,18 +35,18 @@ export function AboutSection() {
           <h2 className="font-[var(--font-outfit)] text-3xl md:text-5xl font-black uppercase mb-6">Meet Matt</h2>
           <div className="space-y-4 text-muted-foreground text-sm md:text-base leading-relaxed">
             <p>
-              Matt is a Google Ads specialist focused on the US and UK tech repair markets. For approximately two years, he has
-              worked directly with independent repair shops, studying the search behavior, campaign challenges and
-              operational realities of this market.
+              I&apos;m Matt, a Google Ads specialist focused on independent repair shops. For the past two
+              years I&apos;ve managed campaigns for phone and electronics repair stores in the US, dealing every day with
+              the policy issues, search behavior and budget limits that make this market different.
             </p>
             <p>
-              Matt4Tech is a founder-led remote operation based in Brazil and serving legitimate repair businesses across
-              the US and UK. Clients communicate directly with Matt instead of being passed between account
-              managers.
+              Matt4Tech is a small, remote, founder-led operation based in Brazil. That means you don&apos;t get
+              passed between account managers: the person who builds your campaign is the same person who answers
+              your messages and sends your reports.
             </p>
             <p>
-              The objective is straightforward: build a cleaner, more measurable and more focused customer acquisition
-              system for each shop.
+              My goal is simple: keep your ads running, keep your shop at the top of local searches and show you
+              exactly what your budget brings back.
             </p>
           </div>
 

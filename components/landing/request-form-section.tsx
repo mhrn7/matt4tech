@@ -1,16 +1,24 @@
 "use client"
 
 import { useState } from "react"
+import { trackLead } from "@/lib/track"
 import { useRouter } from "next/navigation"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faArrowRight, faCircleNotch } from "@fortawesome/free-solid-svg-icons"
 
 const budgetOptions = [
-  "Less than $30/day",
+  "Under $30/day",
   "$30–$60/day",
   "$60–$100/day",
-  "More than $100/day",
+  "$100+/day",
   "Not sure yet",
+]
+
+const adsHistoryOptions = [
+  "Yes, my ads were disapproved or suspended",
+  "Yes, but results were poor",
+  "Yes, and it works, I want better results",
+  "No, never advertised on Google",
 ]
 
 const initialState = {
@@ -21,10 +29,7 @@ const initialState = {
   email: "",
   phone: "",
   triedBefore: "",
-  previousResult: "",
   budget: "",
-  valueExpectation: "",
-  consent: false,
   websiteCheck: "",
 }
 
@@ -43,8 +48,8 @@ export function RequestFormSection() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (!form.consent) {
-      setError("Please agree to be contacted before submitting.")
+    if (!form.fullName || !form.shopName || !form.cityState || !form.email || !form.phone || !form.triedBefore || !form.budget) {
+      setError("Please fill in all required fields.")
       return
     }
     setIsSubmitting(true)
@@ -54,7 +59,7 @@ export function RequestFormSection() {
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        body: JSON.stringify({ ...form, consent: true }),
       })
 
       const payload = await response.json().catch(() => null)
@@ -62,6 +67,7 @@ export function RequestFormSection() {
         throw new Error(payload?.error || "Unable to send your request right now.")
       }
 
+      trackLead({ budget: form.budget, ads_history: form.triedBefore })
       router.push("/thank-you")
     } catch (err) {
       console.error("Contact form submission error:", err)
@@ -75,13 +81,13 @@ export function RequestFormSection() {
       <div className="container mx-auto max-w-3xl">
         <div className="text-center mb-10 md:mb-14" data-aos="fade-up">
           <p className="font-[var(--font-outfit)] font-bold uppercase tracking-widest text-primary text-xs mb-3">
-            Free Campaign Audit
+            Free Audit, No Obligation
           </p>
           <h2 className="font-[var(--font-outfit)] text-3xl md:text-5xl font-black uppercase mb-4 text-balance">
-            Let&apos;s Find Out if Google Ads Makes Sense for Your Shop.
+            Find Out What&apos;s Holding Your Ads Back.
           </h2>
           <p className="text-muted-foreground text-sm md:text-base max-w-xl mx-auto leading-relaxed text-pretty">
-            Request a free audit of your website, local market and current advertising situation.
+            Tell me about your shop and I&apos;ll send you a written review of your website, your local competitors and your current ads, with the first changes I would make. Takes 1 minute to fill in.
           </p>
         </div>
 
@@ -109,13 +115,13 @@ export function RequestFormSection() {
                 onChange={(e) => update("shopName", e.target.value)} />
             </div>
             <div>
-              <label htmlFor="website" className={labelClass}>Business Website</label>
-              <input id="website" type="url" placeholder="https://" className={inputClass} value={form.website}
+              <label htmlFor="website" className={labelClass}>Website (optional)</label>
+              <input id="website" type="text" placeholder="yourshop.com" className={inputClass} value={form.website}
                 onChange={(e) => update("website", e.target.value)} />
             </div>
             <div>
               <label htmlFor="cityState" className={labelClass}>City and State</label>
-              <input id="cityState" required className={inputClass} value={form.cityState}
+              <input id="cityState" required placeholder="e.g. Doral, FL" className={inputClass} value={form.cityState}
                 onChange={(e) => update("cityState", e.target.value)} />
             </div>
             <div>
@@ -130,46 +136,28 @@ export function RequestFormSection() {
             </div>
           </div>
 
-          <div>
-            <label htmlFor="triedBefore" className={labelClass}>Have you tried Google Ads before?</label>
-            <select id="triedBefore" required className={`${inputClass} cursor-pointer`} value={form.triedBefore}
-              onChange={(e) => update("triedBefore", e.target.value)}>
-              <option value="" disabled className="bg-background">Select an option</option>
-              <option value="Yes" className="bg-background">Yes</option>
-              <option value="No" className="bg-background">No</option>
-              <option value="Not sure" className="bg-background">Not sure</option>
-            </select>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div>
+              <label htmlFor="triedBefore" className={labelClass}>Have you run Google Ads before?</label>
+              <select id="triedBefore" required className={`${inputClass} cursor-pointer`} value={form.triedBefore}
+                onChange={(e) => update("triedBefore", e.target.value)}>
+                <option value="" disabled className="bg-background">Select an option</option>
+                {adsHistoryOptions.map((opt) => (
+                  <option key={opt} value={opt} className="bg-background">{opt}</option>
+                ))}
+              </select>
+            </div>
+            <div>
+              <label htmlFor="budget" className={labelClass}>Daily ad budget (paid to Google)</label>
+              <select id="budget" required className={`${inputClass} cursor-pointer`} value={form.budget}
+                onChange={(e) => update("budget", e.target.value)}>
+                <option value="" disabled className="bg-background">Select a range</option>
+                {budgetOptions.map((opt) => (
+                  <option key={opt} value={opt} className="bg-background">{opt}</option>
+                ))}
+              </select>
+            </div>
           </div>
-
-          <div>
-            <label htmlFor="previousResult" className={labelClass}>What happened with your previous campaigns?</label>
-            <textarea id="previousResult" rows={3} className={inputClass} value={form.previousResult}
-              onChange={(e) => update("previousResult", e.target.value)} />
-          </div>
-
-          <div>
-            <label htmlFor="budget" className={labelClass}>Approximate monthly advertising budget</label>
-            <select id="budget" required className={`${inputClass} cursor-pointer`} value={form.budget}
-              onChange={(e) => update("budget", e.target.value)}>
-              <option value="" disabled className="bg-background">Select a budget range</option>
-              {budgetOptions.map((opt) => (
-                <option key={opt} value={opt} className="bg-background">{opt}</option>
-              ))}
-            </select>
-          </div>
-
-          <div>
-            <label htmlFor="valueExpectation" className={labelClass}>What would make this service valuable to you?</label>
-            <textarea id="valueExpectation" rows={3} className={inputClass} value={form.valueExpectation}
-              onChange={(e) => update("valueExpectation", e.target.value)} />
-          </div>
-
-          <label className="flex items-start gap-3 cursor-pointer text-xs md:text-sm text-muted-foreground leading-relaxed">
-            <input type="checkbox" required checked={form.consent}
-              onChange={(e) => update("consent", e.target.checked)}
-              className="accent-primary w-4 h-4 mt-0.5 shrink-0" />
-            By submitting this form, you agree to be contacted about your request. Your information will not be sold.
-          </label>
 
           {error && <p role="alert" aria-live="polite" className="text-sm text-destructive">{error}</p>}
 
@@ -178,12 +166,12 @@ export function RequestFormSection() {
             {isSubmitting ? (
               <><FontAwesomeIcon icon={faCircleNotch} className="animate-spin" /> Sending…</>
             ) : (
-              <>Request a Free Audit <FontAwesomeIcon icon={faArrowRight} /></>
+              <>Get My Free Audit <FontAwesomeIcon icon={faArrowRight} /></>
             )}
           </button>
 
           <p className="text-center text-[11px] md:text-xs text-muted-foreground">
-            Get a clear assessment of your current Google Ads opportunity and the next steps to generate more qualified local demand.
+            By sending this form you agree to be contacted about your request. Your information is never sold.
           </p>
         </form>
       </div>

@@ -20,7 +20,7 @@ export function Footer() {
               Matt<span className="text-primary">4</span>Tech
             </Link>
             <p className="mt-4 max-w-sm text-sm text-muted-foreground leading-relaxed">
-              Specialized Google Ads management, landing pages and conversion tracking for legitimate US and UK tech repair shops.
+              Policy-aware Google Ads, landing pages and call tracking for independent repair shops in the US.
             </p>
           </div>
 
@@ -39,8 +39,8 @@ export function Footer() {
             <a href={siteConfig.facebook} target="_blank" rel="noopener noreferrer" className="block hover:text-primary transition">
               Facebook
             </a>
-            <a href={siteConfig.phoneHref} className="block hover:text-primary transition">
-              {siteConfig.phone}
+            <a href={siteConfig.whatsapp} target="_blank" rel="noopener noreferrer" className="block hover:text-primary transition">
+              WhatsApp
             </a>
             <a href={`mailto:${siteConfig.email}`} className="block hover:text-primary transition break-all">
               {siteConfig.email}

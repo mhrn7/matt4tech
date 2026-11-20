@@ -1,9 +1,9 @@
 export const siteConfig = {
   name: "Matt4Tech",
   url: "https://www.matt4tech.site",
-  tagline: "Google Ads for US & UK Tech Repair Shops",
+  tagline: "Google Ads for Independent Repair Shops in the US",
   description:
-    "Matt4Tech builds policy-aware Google Ads campaigns, conversion-focused landing pages and reliable call tracking for independent tech repair shops across the US and UK.",
+    "Policy-aware Google Ads for independent phone and electronics repair shops in the US. Fewer disapprovals, a top spot in local searches and real calls you can track. Management from $399/month.",
   author: "Matt Neves",
   email: "contact@matt4tech.site",
   phone: "+55 61 99960-1534",
@@ -12,13 +12,18 @@ export const siteConfig = {
   instagram: "https://www.instagram.com/matt4tech_of/",
   instagramHandle: "@matt4tech_of",
   facebook: "https://facebook.com/profile.php?id=61582748831455",
+  managementFrom: 399,
+  // Google tag IDs (public by design). Leave empty to disable a tag.
+  gaMeasurementId: "",
+  googleAdsId: "",
+  googleAdsLeadLabel: "",
 }
 
 export const mainNav = [
-  { label: "Home", href: "/#top" },
   { label: "How It Works", href: "/#how-it-works" },
-  { label: "Who It's For", href: "/#who-its-for" },
+  { label: "Results", href: "/#proof" },
+  { label: "Pricing", href: "/#pricing" },
   { label: "About Matt", href: "/#about" },
-  { label: "Blog", href: "/blog" },
+  { label: "FAQ", href: "/#faq" },
 ]
 

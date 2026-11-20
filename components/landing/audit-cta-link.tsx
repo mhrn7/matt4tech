@@ -31,7 +31,7 @@ function scrollToAuditForm() {
   })
 }
 
-export function AuditCtaLink({ className, children = "Request a Free Audit", onNavigate }: AuditCtaLinkProps) {
+export function AuditCtaLink({ className, children = "Get My Free Audit", onNavigate }: AuditCtaLinkProps) {
   const pathname = usePathname()
 
   const handleClick = (event: MouseEvent<HTMLAnchorElement>) => {

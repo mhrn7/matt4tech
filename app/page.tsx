@@ -6,15 +6,11 @@ import "aos/dist/aos.css"
 import { Header } from "@/components/landing/header"
 import { HeroSection } from "@/components/landing/hero-section"
 import { ProblemsSection } from "@/components/landing/problems-section"
-import { SolutionSection } from "@/components/landing/solution-section"
 import { ProtocolSection } from "@/components/landing/protocol-section"
 import { TestimonialsSection } from "@/components/landing/testimonials-section"
 import { AboutSection } from "@/components/landing/about-section"
-import { WhoItsForSection } from "@/components/landing/who-its-for-section"
 import { PricingSection } from "@/components/landing/pricing-section"
 import { FaqSection } from "@/components/landing/faq-section"
-import { BlogSection } from "@/components/landing/blog-section"
-import { CommandSection } from "@/components/landing/command-section"
 import { RequestFormSection } from "@/components/landing/request-form-section"
 import { Footer } from "@/components/landing/footer"
 import { WhatsAppButton } from "@/components/landing/whatsapp-button"
@@ -53,8 +49,8 @@ export default function Home() {
     url: siteConfig.url,
     description: siteConfig.description,
     email: siteConfig.email,
-    telephone: siteConfig.phone,
     areaServed: { "@type": "Country", name: "United States" },
+    priceRange: "From $399/month",
     sameAs: [siteConfig.instagram, siteConfig.facebook],
     founder: { "@type": "Person", name: siteConfig.author },
   }
@@ -69,15 +65,11 @@ export default function Home() {
       <main>
         <HeroSection />
         <ProblemsSection />
-        <SolutionSection />
         <ProtocolSection />
         <TestimonialsSection />
         <AboutSection />
-        <WhoItsForSection />
         <PricingSection />
         <FaqSection />
-        <BlogSection />
-        <CommandSection />
         <RequestFormSection />
       </main>
       <Footer />

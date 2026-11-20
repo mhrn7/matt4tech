@@ -5,28 +5,28 @@ import { AuditCtaLink } from "@/components/landing/audit-cta-link"
 const steps = [
   {
     number: "01",
-    title: "Business and Market Review",
-    text: "We analyze the shop, service area, existing website, search demand, competitors and previous advertising history.",
+    title: "Free Audit",
+    text: "I review your website, your local competitors and your current ads (if you have any) and send you a clear written plan. No cost, no commitment.",
   },
   {
     number: "02",
-    title: "Campaign Architecture",
-    text: "We develop a focused campaign structure designed around relevant local demand and the realities of the repair industry.",
+    title: "Policy-Safe Campaign Setup",
+    text: "Campaigns, ads and keywords written to respect Google's rules for repair businesses and focused on people who need a fix near your shop.",
   },
   {
     number: "03",
-    title: "Conversion Landing Page",
-    text: "We create or improve a clean landing page that communicates trust, location, services and a clear reason to call.",
+    title: "Landing Page That Converts",
+    text: "If your site is slow, confusing or risky for Google's policies, I build or adjust a clean page with your location, services and a clear reason to call.",
   },
   {
     number: "04",
-    title: "Conversion Tracking",
-    text: "We configure tracking for calls, forms and other meaningful customer actions whenever technically possible.",
+    title: "Call and Form Tracking",
+    text: "Every call and quote request is tracked, so you know exactly what your ad budget is bringing in.",
   },
   {
     number: "05",
-    title: "Weekly Optimization",
-    text: "We review search terms, targeting, ads, budget distribution and conversion quality to improve performance over time.",
+    title: "Weekly Optimization and Reports",
+    text: "Every week I cut bad searches, adjust bids and budget, and you get a simple report with your numbers. You talk directly to me.",
   },
 ]
 
@@ -39,7 +39,7 @@ export function ProtocolSection() {
             How It Works
           </p>
           <h2 className="font-[var(--font-outfit)] text-3xl md:text-5xl font-black uppercase text-balance">
-            A Practical Five-Step System
+            From Free Audit to a Ringing Phone
           </h2>
         </div>
 
@@ -59,7 +59,7 @@ export function ProtocolSection() {
 
         <div className="text-center mt-12" data-aos="fade-up">
           <AuditCtaLink className="btn-primary inline-flex items-center gap-3 px-8 py-4 font-[var(--font-outfit)] font-bold uppercase tracking-wider text-sm md:text-base">
-            Request a Free Audit <FontAwesomeIcon icon={faArrowRight} />
+            Get My Free Audit <FontAwesomeIcon icon={faArrowRight} />
           </AuditCtaLink>
         </div>
       </div>

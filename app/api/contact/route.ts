@@ -88,9 +88,9 @@ export async function POST(request: Request) {
         `City / State: ${cityState}`,
         `Email: ${email}`,
         `Phone / WhatsApp: ${phone}`,
-        `Tried Google Ads?: ${triedBefore}`,
+        `Google Ads history: ${triedBefore}`,
         `Previous result: ${previousResult || "Not provided"}`,
-        `Monthly ad budget: ${budget}`,
+        `Daily ad budget: ${budget}`,
         `Expected value: ${valueExpectation || "Not provided"}`,
       ].join("\n"),
       html: `
@@ -105,9 +105,9 @@ export async function POST(request: Request) {
               <tr><td style="padding:9px;border-bottom:1px solid #ddd"><strong>City / State</strong></td><td style="padding:9px;border-bottom:1px solid #ddd">${escapeHtml(cityState)}</td></tr>
               <tr><td style="padding:9px;border-bottom:1px solid #ddd"><strong>Email</strong></td><td style="padding:9px;border-bottom:1px solid #ddd">${escapeHtml(email)}</td></tr>
               <tr><td style="padding:9px;border-bottom:1px solid #ddd"><strong>Phone / WhatsApp</strong></td><td style="padding:9px;border-bottom:1px solid #ddd">${escapeHtml(phone)}</td></tr>
-              <tr><td style="padding:9px;border-bottom:1px solid #ddd"><strong>Tried Google Ads?</strong></td><td style="padding:9px;border-bottom:1px solid #ddd">${escapeHtml(triedBefore)}</td></tr>
+              <tr><td style="padding:9px;border-bottom:1px solid #ddd"><strong>Google Ads history</strong></td><td style="padding:9px;border-bottom:1px solid #ddd">${escapeHtml(triedBefore)}</td></tr>
               <tr><td style="padding:9px;border-bottom:1px solid #ddd"><strong>Previous result</strong></td><td style="padding:9px;border-bottom:1px solid #ddd;white-space:pre-wrap">${escapeHtml(previousResult || "Not provided")}</td></tr>
-              <tr><td style="padding:9px;border-bottom:1px solid #ddd"><strong>Monthly ad budget</strong></td><td style="padding:9px;border-bottom:1px solid #ddd">${escapeHtml(budget)}</td></tr>
+              <tr><td style="padding:9px;border-bottom:1px solid #ddd"><strong>Daily ad budget</strong></td><td style="padding:9px;border-bottom:1px solid #ddd">${escapeHtml(budget)}</td></tr>
               <tr><td style="padding:9px;border-bottom:1px solid #ddd"><strong>Expected value</strong></td><td style="padding:9px;border-bottom:1px solid #ddd;white-space:pre-wrap">${escapeHtml(valueExpectation || "Not provided")}</td></tr>
             </tbody>
           </table>

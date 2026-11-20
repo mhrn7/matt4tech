@@ -9,28 +9,28 @@ import {
 
 export const faqs = [
   {
-    q: "Do I need a new landing page?",
-    a: "Not always. We first review your existing website. If it is slow, unclear, difficult to track or poorly suited to the campaign, we may recommend a dedicated landing page.",
+    q: "My ads were disapproved or my account was suspended before. Can you help?",
+    a: "That is the most common situation I see with repair shops. I review your ads, keywords and landing page against Google's policies and rebuild what is causing the problem. Nobody can honestly guarantee Google's decisions, but working inside the rules is exactly what I specialize in.",
   },
   {
-    q: "How much should I spend on Google Ads?",
-    a: "For most shops, the recommended starting point is at least $30 per day. The appropriate budget depends on the location, competition, services and local search demand.",
+    q: "How much does it cost?",
+    a: "Management starts at $399/month. Your ad budget is separate and paid directly to Google. I recommend at least $30/day so the campaign has enough data to optimize.",
   },
   {
-    q: "Where is Matt4Tech located?",
-    a: "Matt4Tech is a remote, founder-led operation based in Brazil and serving repair shops across the US and UK.",
+    q: "What do I get in the free audit?",
+    a: "A short written review of your website, your main local competitors and your current Google Ads (if you have any), with the changes I would make first. It is free and there is no obligation to hire me.",
   },
   {
-    q: "Do you work with other industries?",
-    a: "The primary specialization is independent tech repair shops in the US and UK.",
+    q: "Do I need a new website?",
+    a: "Not always. If your current site is fast, clear and safe for Google's policies, we use it. If it is slow, confusing or likely to cause disapprovals, I recommend a dedicated landing page.",
   },
   {
-    q: "What results should I expect?",
-    a: "Our goal is consistent qualified demand from people actively searching for repair services in your market. We continuously refine targeting, search terms, landing pages and conversion tracking to turn Google Search into a predictable acquisition channel.",
+    q: "How will I know if it's working?",
+    a: "Calls and quote requests are tracked, and you get a simple monthly report showing what your budget brought in. You can also message me any time to ask about your numbers.",
   },
   {
-    q: "Who manages my campaigns?",
-    a: "Matt personally leads the strategy, management and communication for active clients.",
+    q: "Who will manage my account?",
+    a: "I do, personally. Matt4Tech is a founder-led remote operation based in Brazil, and you talk directly to the person managing your campaigns by WhatsApp or email.",
   },
 ]
 

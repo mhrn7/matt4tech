@@ -3,24 +3,28 @@ import { faArrowRight, faQuoteLeft } from "@fortawesome/free-solid-svg-icons"
 import { AuditCtaLink } from "@/components/landing/audit-cta-link"
 
 const stats = [
-  { value: "2+ Years", text: "Focused on Google Ads challenges faced by US and UK tech repair shops." },
-  { value: "Repair Only", text: "A specialized service rather than generic marketing for multiple unrelated industries." },
-  { value: "Weekly", text: "Campaign reviews and optimization based on search behavior and conversion data." },
-  { value: "Direct Access", text: "Clients communicate directly with the specialist responsible for the strategy." },
+  { value: "4X", text: "More quality leads reported by Just Phone after the new campaigns." },
+  { value: "Top of Google", text: "Clients see their shop at the top of local searches for their services." },
+  { value: "Weekly", text: "Search terms, bids and budget reviewed every week, not once a month." },
+  { value: "1 Person", text: "You talk directly to Matt, the person managing your account. No hand-offs." },
 ]
 
 const testimonials = [
   {
+    name: "Just Phone",
+    company: "Phone repair shop",
+    quote: "Now we can see our shop at the top of Google all the time, and our quality leads have gone up 4X.",
+  },
+  {
     name: "Amjad A.",
-    company: "Cellphone Express Inc.",
+    company: "Cellphone Express",
     quote:
-      "Matt's reliability and support are excellent. We consistently receive clear reports, attentive follow-up and qualified customers reaching the shop.",
+      "What gave me the most peace of mind was Matt's transparency. He is always proactive in solving problems as they come up and keeps our shop at the top of Google.",
   },
   {
     name: "Belen L.",
-    company: "Techy Inc.",
-    quote:
-      "I like Matt's service because it is transparent and he always helps resolve problems. The results have been consistent and continue to grow.",
+    company: "Techy Doral",
+    quote: "High-quality service. It has truly made a difference for us at Techy.",
   },
 ]
 
@@ -30,7 +34,7 @@ export function TestimonialsSection() {
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-12 md:mb-16" data-aos="fade-up">
           <h2 className="font-[var(--font-outfit)] text-3xl md:text-5xl font-black uppercase text-balance">
-            Specialization You Can Verify
+            Results From Real Repair Shops
           </h2>
         </div>
 
@@ -50,11 +54,11 @@ export function TestimonialsSection() {
             What Current Clients Say
           </h3>
           <p className="text-sm text-muted-foreground leading-relaxed">
-            Direct feedback from active tech repair shop clients working with Matt4Tech.
+            Feedback shared by active clients when asked how the work is going.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mb-12 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mb-12 max-w-6xl mx-auto">
           {testimonials.map((testimonial, i) => (
             <figure
               key={`${testimonial.name}-${testimonial.company}`}
@@ -76,10 +80,10 @@ export function TestimonialsSection() {
 
         <div className="text-center" data-aos="fade-up">
           <p className="text-base md:text-lg text-white font-light mb-6 max-w-xl mx-auto text-pretty">
-            Ready to build a more consistent customer acquisition system for your shop?
+            Want to know what Google Ads could do for your shop?
           </p>
           <AuditCtaLink className="btn-primary inline-flex items-center gap-3 px-8 py-4 font-[var(--font-outfit)] font-bold uppercase tracking-wider text-sm md:text-base">
-            Request a Free Audit <FontAwesomeIcon icon={faArrowRight} />
+            Get My Free Audit <FontAwesomeIcon icon={faArrowRight} />
           </AuditCtaLink>
         </div>
       </div>
