@@ -14,7 +14,7 @@ export const siteConfig = {
   facebook: "https://facebook.com/profile.php?id=61582748831455",
   managementFrom: 399,
   // Google tag IDs (public by design). Leave empty to disable a tag.
-  gaMeasurementId: "",
+  gaMeasurementId: "G-VHDR8W7DE8",
   googleAdsId: "",
   googleAdsLeadLabel: "",
 }
